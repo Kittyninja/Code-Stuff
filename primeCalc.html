@@ -1,0 +1,59 @@
+=j<html>
+    <head>
+        <style>
+            body {
+                background-color: honeydew;
+            }
+            html {
+                text-align: center;
+            }
+            footer {
+                display: flex;
+                justify-content: center;
+                padding: 5px;
+                background-color: #45a1ff;
+                color: #fff;
+                text-align: start;
+            }
+        </style>
+    </head>
+    <body>
+        <title>Prime Calculator</title>
+        <h1>Prime Or Composite Calculator.</h1>
+        <br><br>
+        <input type="number">
+        <button>Calculate</button>
+        <br><br>
+        <p></p>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <footer><p>if you don't want your tab to freeze, try to keep your numbers below 10,000</p></footer>
+        <script>
+            const inp = document.querySelector('input')
+            const butt = document.querySelector('button')
+            const txt = document.querySelector('p')
+            butt.addEventListener('click', () => {
+                txt.textContent = calc(Math.round(inp.value))
+            })
+            function calc(num) {
+                if (num > 1) {
+                    var mlts = []
+                   for (let i = 1; i <= num; i++) {
+                        for (let g = 1; g <= num; g++) {
+                            if (g * i == num) {
+                                mlts += g + ' '
+                            }
+                        }
+                   }
+                   var mltslist = mlts.split(' ')
+                   if (mlts.length == 2) {
+                            return num + ' is Prime, its factors are ' + mltslist
+                    } else {
+                                return num + ' is Composite, its factors are ' + mltslist
+                            }
+                } else {
+                    return num + ' is neither Composite nor prime.'
+                }
+            }
+        </script>
+    </body>
+</html>
