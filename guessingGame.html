@@ -1,0 +1,92 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <style>
+
+            .navy {
+                color: navy;
+            }
+
+            body {
+                background-color: lemonchiffon;
+            }            
+
+            .green {
+    background-color:  green;
+    width: 250px;
+}
+
+.red {
+    background-color:  red;
+    width: 250px;
+}
+
+.yellow {
+    background-color:  rgb(255, 217, 0);
+    width: 250px;
+}
+
+
+        </style>
+        <title>Guessing Game</title>
+        <h3 class="navy">Number Guessing Game.</h3>
+        <p class="navy">guess a number from 1 - 100.</p>
+        <input type="number">
+        <button>submit</button>
+        <br>
+        <br>
+        <div class="yellow navy">…</div>
+        <br>
+        <p class="navy">trys: <span id="tryCount">0</span></p>
+        <script>
+            var number = Math.ceil(Math.random() * 100)
+var guess = document.querySelector('input').value
+var button = document.querySelector('button')
+var trys = 0
+button.addEventListener('click', submit)
+
+function submit() {
+    trys += 1
+    document.getElementById('tryCount').textContent = trys
+    guess = document.querySelector('input').value
+    if (guess == number) {
+        feedbackText("yay, you got it!", "green")
+    } else {
+        if (guess > 100 || guess < 1) {
+            feedbackText("try guessing between 1 - 100", "red")
+        } else {
+            if (guess < number) {
+                feedbackText("too low!!!", "red")
+            } else {
+                if (guess > number) {
+                    feedbackText("too high!!!", "red")
+                } else {
+                    feedbackText("???", "red")
+                }
+            }
+        } 
+    }
+}
+
+function feedbackText(text, color) {
+    var feedback = document.querySelector('div')
+    feedback.textContent = text
+    if (feedback.classList[0] === "yellow" || feedback.classList[1] === "yellow" || feedback.classList[2] === "yellow") {
+        feedback.classList.remove("yellow")
+    }
+    if (feedback.classList[0] === "red" || feedback.classList[1] === "red" || feedback.classList[2] === "red") {
+        feedback.classList.remove("red")
+    }
+    if (feedback.classList[0] === "green" || feedback.classList[1] === "green" || feedback.classList[2] === "green") {
+        feedback.classList.remove("green")
+    }
+    feedback.classList.add(color)
+}
+
+function hack() {
+    feedbackText("yay, you got it! (by hacking)", "green")
+}
+        </script>
+    </body>
+</html>
