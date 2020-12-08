@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <style>
+html {
+    text-align: center;
+}
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+        </style>
+    </head>
+    <body>
+        <title>Animal Language Translator</title>
+        <h1>Animal Language Translator.</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Cat 🐈</button>
+            <div class="dropdown-content">
+              <a id="cat"> Cat 🐈</a>
+              <a id="dog"> Dog 🐕</a>
+              <a id="turkey"> Turkey 🦃</a>
+              <a id="sheep"> Sheep 🐑</a>
+              <a id="pig"> Pig 🐖</a>
+              <a id="mouse"> Mouse 🐁</a>
+              <a id="duck"> Duck 🦆</a>
+              <a id="fish"> Fish 🐟</a>
+              <a id="snake"> Snake 🐍</a>
+              <a id="caveman"> Caveman 👨🏼‍🦲</a>
+            </div>
+          </div>
+          <br><br><br><br><br><br>
+          <p>Put any language in here⬇</p>
+          <textarea name="text" id="textBox" cols="50" rows="10"></textarea> 
+          <p>Then <span id="lan">Cat 🐈</span> language comes out here⬇</p>
+          <textarea contenteditable=false name="output" id="output" cols="50" rows="10"></textarea>
+        <script>
+            const inp = document.getElementById('textBox')
+            const outp = document.getElementById('output')
+            const button = document.querySelector('button')
+            const choices = {
+                cat: document.getElementById('cat'),
+                dog: document.getElementById('dog'),
+                turkey: document.getElementById('turkey'),
+                sheep: document.getElementById('sheep'),
+                pig: document.getElementById('pig'),
+                mouse: document.getElementById('mouse'),
+                duck: document.getElementById('duck'),
+                fish: document.getElementById('fish'),
+                snake: document.getElementById('snake'),
+                caveman: document.getElementById('caveman')
+            }
+            var lang = ['meow', 'purr', 'mow', 'hiss']
+            choices.cat.addEventListener('click', () => {
+                lang = ['meow', 'purr', 'mow', 'hiss']
+                updateTxt()
+                button.textContent = choices.cat.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.dog.addEventListener('click', () => {
+                lang = ['woof', 'bark', 'wheeze', 'howl', 'ruff']
+                updateTxt()
+                button.textContent = choices.dog.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.turkey.addEventListener('click', () => {
+                lang = ['gobble', 'gobbl']
+                updateTxt()
+                button.textContent = choices.turkey.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.sheep.addEventListener('click', () => {
+                lang = ['baa', 'baaa', 'ba', 'baaaa']
+                updateTxt()
+                button.textContent = choices.sheep.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.pig.addEventListener('click', () => {
+                lang = ['oink', 'snort', 'squeal', 'grunt']
+                updateTxt()
+                button.textContent = choices.pig.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.mouse.addEventListener('click', () => {
+                lang = ['squeak', 'squeal', 'squeeak']
+                updateTxt()
+                button.textContent = choices.mouse.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.duck.addEventListener('click', () => {
+                lang = ['quack', 'quaak']
+                updateTxt()
+                button.textContent = choices.duck.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.caveman.addEventListener('click', () => {
+                lang = ['booga', 'ooga', 'grumble', 'booga', 'booga', 'booga', 'ooga']
+                updateTxt()
+                button.textContent = choices.caveman.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.snake.addEventListener('click', () => {
+                lang = ['hiss', 'rattle']
+                updateTxt()
+                button.textContent = choices.snake.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            choices.fish.addEventListener('click', () => {
+                lang = ['blub', 'splash', 'bluub'] 
+                updateTxt()
+                button.textContent = choices.fish.textContent
+                document.getElementById('lan').textContent = button.textContent
+            })
+            inp.addEventListener('keyup', updateTxt)
+
+            function updateTxt() {
+                if (inp.value == '') {
+                    return
+                } else {
+                var wla = inp.value.split(' ')
+                var o = ''
+                for (let i = 0; i < wla.length; i++) {
+                    const ran = Math.floor(Math.random() * lang.length)
+                    o += ' ' + lang[ran]   
+                }
+                outp.textContent = o
+                }   
+            }
+        </script>
+    </body>
+</html>
