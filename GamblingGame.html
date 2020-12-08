@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <style>
+            .mainButton {
+                width: 100;
+                height: 30;
+            }
+
+            body {
+                background-color: lemonchiffon;
+            }
+
+            .navy {
+                color: navy;
+            }
+        </style>
+    </head>
+    <body>
+        <title>Gambling Game</title>
+       <h1 class="navy">Gambling Game.</h1>
+       <h3 class="navy">how to play.</h3>
+       <p class="navy">this is a game about risk. <br>
+         if you press the button there will be a 80% chance that you will win, <br>
+         and a 20% chance you lose. <br> 
+         if you win, you get one point. but when you lose, you lose them all.<br>
+         when you give up, press the give up button. <br>
+         if you want to try again after giving up or losing, <br> then press the restart button (or press command + R)</p>
+         <h3 class="navy">the Game.</h3>
+         <button class="mainButton navy" id="mainButton">press me.</button>
+         <br><br>
+         <h2 class="navy" id="pointCounter">0 points.</h2>
+         <br>
+         <button class="navy" id="quitButton">give up.</button>
+         <br><br><br>
+         <button class="navy" id="restartButton">restart.</button>
+        <script>
+            const mainButton = document.getElementById('mainButton')
+            const quitButton = document.getElementById('quitButton')
+            const pointCounter = document.getElementById('pointCounter')
+            const restartButton = document.getElementById('restartButton')
+            const scores = [5, 4, 6, 2, 0, 1, 1, 2, 4, 3]
+            var points = 0
+            var average 
+            var done = false
+
+            function avg(array) {
+                var length = array.length
+                var total = 0
+                for (let i = 0; i < array.length; i++) {
+                    total += array[i]
+                }
+                return total / length;
+            }
+            average = avg(scores)
+
+            function comToAvg(number) {
+                if (number > average) {
+                    return "above average score 👏"
+                }
+                if (number < average) {
+                    return "below average score 👎"   
+                }
+                if (number === average) {
+                    return "average score 🤷"
+                }
+            }
+
+            restartButton.addEventListener('click', () => {
+                points = 0
+                pointCounter.textContent = "0 points."
+                done = false
+            })
+
+            quitButton.addEventListener('click', () => {
+                if (done != true) {
+                done = true
+                pointCounter.textContent = "you got " + points + " points (" + comToAvg(points) + ")."
+                }
+            })
+
+            mainButton.addEventListener('click', () => {
+
+                if (done != true) {
+                var num = Math.floor(Math.random() * 100)
+                if (num >= 20) {
+                    points++
+                    pointCounter.textContent = points + " points."
+                }
+                if (num < 20) {
+                    points = 0
+                    done = true
+                    pointCounter.textContent = "you lose 😈"
+                }
+                }
+            })
+        </script>
+    </body>
+</html>
