@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+            html {
+                text-align: center;
+            }
+            textarea {
+                width: 100%;
+            }
+            button{
+                background-color: #4CAF50;
+                padding: 16px;
+                color: black;
+                border-color: #3d9b40;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <title>Average Calculator</title>
+        <h1>Average Calculator.</h1>
+        <p>type your numbers into the text box below with commas seperating them<br>
+        for example:  102,212,423,87,90.2 .  then press calculate, and the average of all<br>
+        of the numbers will apear.</p>
+        <textarea rows="10"></textarea>
+        <br><br>
+        <button>Calculate!</button>
+        <br><br>
+        <input type="checkbox">
+        <label>round</label>
+        <br><br>
+        <h2></h2>
+        <script>
+            const inp = document.querySelector('textarea')
+            const p = document.querySelector('h2')
+            const b = document.querySelector('button')
+            const c = document.querySelector('input')
+            b.addEventListener('click', () => {
+                if (c.value == 'off') {
+                p.textContent = Math.floor(average(inp.value.split(', ')))
+                } else {
+                p.textContent = average(inp.value.split(',')) 
+                }
+            })
+
+            function average(array) {
+                var aw = 0
+                for (let g = 0; g < array.length; g++) {
+                    const element = array[g] / 1;
+                    aw += element
+                }
+                aw = aw / array.length
+                return aw
+            }
+        </script>
+    </body>
+</html>
