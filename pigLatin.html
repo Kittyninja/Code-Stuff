@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <style>
+          body {
+              background-color: lemonchiffon;
+          } 
+          .text {
+              color: navy;
+              transition: 0.7ms;
+          }
+        </style>
+    </head>
+    <body>
+        <h1 class="text">Pig Latin Translator.</h1>
+        <p class="text">type one sentence onto the text box below,<br> then press submit and it will be tranlated into pig latin.</p>
+        <input class="text" type="text" value="">
+        <button class="text">Submit.</button>
+        <br>
+        <p class="text" draggable="true"></p>
+        <script>
+            var inp = document.querySelector('input')
+            var button = document.querySelector('button')
+            var p = document.querySelector('p') 
+            button.addEventListener('click', () => {
+                var werd = inp.value
+                var stuff = ""
+                werd = werd.split(' ')
+                console.log(werd.length)
+                for (let i = 0; i < werd.length; i++) {
+                    const element = werd[i];
+                    stuff += pigLatin(element)
+                    stuff += " "
+                }
+                p.textContent = stuff
+            });
+
+            function pigLatin(word) {
+                const l = word.length
+                var t = ''
+                for (let i = 1; i < word.length; i++) {
+                    t += word[i]
+                }
+                t += word[0] + "ay"
+                return t
+            }
+        </script>
+    </body>
+</html>
